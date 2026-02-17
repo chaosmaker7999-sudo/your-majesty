@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>The Royal Chronicle of Her Majesty Mehul 👑</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: #0a0a0a;
+            font-family: 'Georgia', 'Times New Roman', serif;
+            color: #e0d5c0;
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+            -webkit-text-size-adjust: 100%;
+        }
+        
+        /* DARK BACKGROUND */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, #1a1a1a 0%, #000000 100%);
+            z-index: -2;
+        }
+        
+        /* GOLD SPARKLES OVERLAY */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="10" cy="10" r="1" fill="%23ffd700" opacity="0.1"/><circle cx="50" cy="30" r="1.5" fill="%23ffd700" opacity="0.1"/><circle cx="80" cy="70" r="1" fill="%23ffd700" opacity="0.1"/><circle cx="20" cy="90" r="2" fill="%23ffd700" opacity="0.1"/><circle cx="90" cy="20" r="1" fill="%23ffd700" opacity="0.1"/></svg>');
+            background-repeat: repeat;
+            opacity: 0.3;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .velvet-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(45deg, rgba(128, 0, 128, 0.02) 0px, rgba(128, 0, 128, 0.02) 2px, transparent 2px, transparent 4px);
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        /* MUSIC BUTTON */
+        .music-control {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.9);
+            border: 2px solid #b8860b;
+            border-radius: 60px;
+            padding: 15px 25px;
+            color: #ffd700;
+            cursor: pointer;
+            font-size: 1.3rem;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 0 30px rgba(184, 134, 11, 0.5);
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        .music-control:active {
+            transform: scale(0.95);
+            background: #b8860b;
+            color: black;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 20px rgba(184, 134, 11, 0.3); }
+            50% { box-shadow: 0 0 50px rgba(255, 215, 0, 0.8); }
+            100% { box-shadow: 0 0 20px rgba(184, 134, 11, 0.3); }
+        }
+        
+        .book-container {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 20px 15px 80px 15px;
+            background: rgba(10, 10, 10, 0.85);
+            backdrop-filter: blur(2px);
+            box-shadow: 0 0 100px rgba(0,0,0,0.95), 0 0 0 1px #b8860b inset;
+            border-left: 10px solid #2a1a1a;
+            border-right: 10px solid #2a1a1a;
+            position: relative;
+        }
+        
+        /* TEXT ANIMATIONS */
+        h1, h2, h3 {
+            font-family: 'Cinzel', 'Palatino', serif;
+            color: #ffd700;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+        
+        h1:hover, h2:hover, h3:hover {
+            text-shadow: 0 0 20px gold, 0 0 40px rgba(255, 215, 0, 0.5);
+            transform: scale(1.02);
+        }
+        
+        .title-page {
+            text-align: center;
+            margin: 30px 0;
+            padding: 30px 20px;
+            border: 3px double #b8860b;
+            background: rgba(0,0,0,0.7);
+            box-shadow: 0 0 50px rgba(184, 134, 11, 0.2);
+            animation: glowPulse 4s infinite;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .title-page::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,215,0,0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        @keyframes glowPulse {
+            0% { box-shadow: 0 0 50px rgba(184, 134, 11, 0.2); }
+            50% { box-shadow: 0 0 80px rgba(255, 215, 0, 0.4); }
+            100% { box-shadow: 0 0 50px rgba(184, 134, 11, 0.2); }
+        }
+        
+        .title-page h1 {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            line-height: 1.3;
+            animation: fadeInDown 1.5s;
+        }
+        
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .section-break {
+            margin: 50px 0 30px;
+            text-align: center;
+            animation: slideIn 1s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .section-break h2 {
+            font-size: 2rem;
+            background: linear-gradient(45deg, #1a1a1a, #2a1a2a);
+            display: inline-block;
+            padding: 15px 30px;
+            border-radius: 0 40px 0 40px;
+            border: 2px solid #b8860b;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.8), 0 0 20px #b8860b;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+        }
+        
+        .section-break h2::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,215,0,0.1), transparent);
+            animation: shine 3s infinite;
+        }
+        
+        @keyframes shine {
+            from { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            to { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+        
+        .chapter {
+            margin: 60px 0;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        
+        .chapter.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .chapter-number {
+            font-size: 1.3rem;
+            color: #b8860b;
+            border-bottom: 2px dashed #b8860b;
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+            font-style: italic;
+            text-shadow: 0 0 5px rgba(184, 134, 11, 0.5);
+        }
+        
+        .chapter-title {
+            font-size: 2rem;
+            margin: 10px 0 20px;
+            line-height: 1.3;
+            position: relative;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+        
+        .chapter-title::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, gold, transparent);
+            transition: width 0.5s ease;
+        }
+        
+        .chapter-title:hover::after {
+            width: 100%;
+        }
+        
+        .chapter-title:hover {
+            transform: scale(1.02);
+            text-shadow: 0 0 20px gold;
+        }
+        
+        /* BIG PHOTOS */
+        .royal-portrait {
+            margin: 30px 0;
+            text-align: center;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .portrait-frame {
+            display: inline-block;
+            padding: 15px;
+            background: linear-gradient(145deg, #4a2c2c, #1a1a1a);
+            border-radius: 30px 30px 60px 60px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.9), 0 0 30px #b8860b;
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            transition: all 0.3s ease;
+        }
+        
+        .portrait-frame:hover {
+            transform: scale(1.02);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.9), 0 0 50px gold;
+        }
+        
+        .portrait-frame::before {
+            content: '👑';
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2.5rem;
+            filter: drop-shadow(0 0 10px gold);
+            animation: crownWiggle 3s ease-in-out infinite;
+        }
+        
+        @keyframes crownWiggle {
+            0%, 100% { transform: translateX(-50%) rotate(0deg); }
+            25% { transform: translateX(-50%) rotate(5deg); }
+            75% { transform: translateX(-50%) rotate(-5deg); }
+        }
+        
+        .image-placeholder {
+            width: 100%;
+            min-height: 350px;
+            background: linear-gradient(45deg, #1a1a1a, #2a1a2a);
+            border: 4px dashed #b8860b;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #b8860b;
+            font-size: 1.4rem;
+            padding: 30px 20px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 40px rgba(184, 134, 11, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .image-placeholder::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,215,0,0.1) 0%, transparent 70%);
+            animation: rotate 10s linear infinite;
+        }
+        
+        .image-placeholder:hover {
+            border-color: gold;
+            box-shadow: 0 0 50px gold;
+        }
+        
+        .image-placeholder span {
+            font-size: 4rem;
+            margin-bottom: 15px;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .image-placeholder small {
+            color: #9370db;
+            font-family: monospace;
+            background: rgba(0,0,0,0.7);
+            padding: 8px 15px;
+            border-radius: 30px;
+            margin-top: 15px;
+            font-size: 1rem;
+            border: 1px solid #b8860b;
+        }
+        
+        .portrait-caption {
+            margin-top: 15px;
+            font-style: italic;
+            color: #e6c87c;
+            font-size: 1.1rem;
+        }
+        
+        /* TEXT ANIMATIONS */
+        .chapter-text {
+            font-size: 1.2rem;
+            text-align: left;
+            margin: 30px 0;
+            animation: fadeIn 1.5s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .chapter-text p {
+            margin-bottom: 20px;
+            text-indent: 30px;
+            transition: all 0.3s ease;
+        }
+        
+        .chapter-text p:hover {
+            color: #fff;
+            text-shadow: 0 0 5px rgba(255,215,0,0.3);
+            transform: translateX(5px);
+        }
+        
+        .chapter-text p:first-of-type {
+            text-indent: 0;
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #ffd700;
+        }
+        
+        .chapter-text p:first-of-type::first-letter {
+            font-size: 3.5rem;
+            float: left;
+            line-height: 0.8;
+            margin-right: 8px;
+            color: #b8860b;
+            font-family: 'Cinzel', serif;
+            text-shadow: 0 0 10px gold;
+            animation: letterGlow 2s infinite;
+        }
+        
+        @keyframes letterGlow {
+            0%, 100% { text-shadow: 0 0 10px gold; }
+            50% { text-shadow: 0 0 30px gold; }
+        }
+        
+        /* AUTHOR LETTER */
+        .author-letter {
+            margin: 60px 0 30px;
+            padding: 40px 25px;
+            background: rgba(10, 10, 10, 0.95);
+            border: 2px solid #b8860b;
+            border-radius: 30px 30px 60px 60px;
+            font-family: 'Brush Script MT', cursive;
+            box-shadow: 0 0 80px rgba(255,215,0,0.2);
+            animation: letterPulse 4s infinite;
+            position: relative;
+        }
+        
+        @keyframes letterPulse {
+            0%, 100% { box-shadow: 0 0 80px rgba(255,215,0,0.2); }
+            50% { box-shadow: 0 0 120px rgba(255,215,0,0.4); }
+        }
+        
+        .author-letter::before {
+            content: '✧';
+            font-size: 3rem;
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #ffd700;
+            background: #0a0a0a;
+            padding: 0 20px;
+            text-shadow: 0 0 20px gold;
+            animation: starTwinkle 2s infinite;
+        }
+        
+        @keyframes starTwinkle {
+            0%, 100% { opacity: 1; text-shadow: 0 0 20px gold; }
+            50% { opacity: 0.7; text-shadow: 0 0 40px gold; }
+        }
+        
+        .author-letter h3 {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        
+        .letter-content {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            color: #f0e6d0;
+        }
+        
+        .signature {
+            font-size: 2rem;
+            text-align: right;
+            margin-top: 40px;
+            color: #ffd700;
+            border-top: 2px dashed #b8860b;
+            padding-top: 25px;
+            text-shadow: 0 0 10px gold;
+            animation: signatureGlow 3s infinite;
+        }
+        
+        @keyframes signatureGlow {
+            0%, 100% { text-shadow: 0 0 10px gold; }
+            50% { text-shadow: 0 0 30px gold; }
+        }
+        
+        .royal-footer {
+            text-align: center;
+            margin-top: 60px;
+            padding: 30px 20px;
+            border-top: 3px double #b8860b;
+            color: #b8860b;
+            font-size: 1rem;
+        }
+        
+        .royal-footer p {
+            animation: footerFade 3s infinite;
+        }
+        
+        @keyframes footerFade {
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 1; text-shadow: 0 0 10px gold; }
+        }
+        
+        /* SPARKLES */
+        .sparkle {
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            animation: sparkleFade 1s forwards;
+            font-size: 1.5rem;
+        }
+        
+        @keyframes sparkleFade {
+            0% { opacity: 1; transform: scale(1); }
+            100% { opacity: 0; transform: scale(2); }
+        }
+        
+        /* PHONE OPTIMIZATIONS */
+        @media (max-width: 480px) {
+            .book-container {
+                padding: 15px 10px 70px 10px;
+                border-left-width: 5px;
+                border-right-width: 5px;
+            }
+            
+            .title-page h1 {
+                font-size: 1.8rem;
+            }
+            
+            .chapter-title {
+                font-size: 1.8rem;
+            }
+            
+            .chapter-text {
+                font-size: 1.1rem;
+            }
+            
+            .chapter-text p:first-of-type {
+                font-size: 1.3rem;
+            }
+            
+            .image-placeholder {
+                min-height: 250px;
+                font-size: 1.2rem;
+            }
+            
+            .image-placeholder span {
+                font-size: 3rem;
+            }
+            
+            .music-control {
+                bottom: 15px;
+                right: 15px;
+                padding: 12px 20px;
+                font-size: 1.1rem;
+            }
+            
+            .signature {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="velvet-overlay"></div>
+    
+    <div class="music-control" id="musicToggle">
+        <span id="musicIcon">🔊</span> Royal Anthem
+    </div>
+    
+    <audio id="royalMusic" loop preload="auto">
+        <source src="music.mp3" type="audio/mp3">
+    </audio>
+
+    <div class="book-container">
+        
+        <!-- TITLE PAGE -->
+        <div class="title-page">
+            <h1>THE ROYAL CHRONICLE<br>OF<br>HER MAJESTY MEHUL</h1>
+            <h2>👑 A Novel in Four Books 👑</h2>
+            <div class="date">18th February 2003 — 18th February 2026</div>
+            <div class="portrait-frame">
+                <div class="image-placeholder">
+                    <span>👑</span>
+                    HER MAJESTY
+                    <small>cover.jpg</small>
+                </div>
+            </div>
+        </div>
+        
+        <!-- BOOK ONE: THE ARRIVAL OF LIGHT -->
+        <div class="section-break">
+            <h2>BOOK ONE · THE ARRIVAL OF LIGHT</h2>
+        </div>
+        
+        <!-- CHAPTER 1 -->
+        <div class="chapter fade-in" id="chapter1">
+            <div class="chapter-number">Chapter One</div>
+            <div class="chapter-title">The Arrival of Light</div>
+            <div class="royal-portrait">
+                <div class="portrait-frame">
+                    <div class="image-placeholder">
+                        <span>👶</span> CHAPTER 1
+                        <small>1.jpg</small>
+                    </div>
+                </div>
+            </div>
+            <div class="chapter-text">
+                <p>In this year, the world didn't know it yet… but a queen had arrived. Tiny hands, tiny feet, but a heart already powerful. She didn't speak words yet, but she already ruled hearts with her smile.</p>
+                <p>The winter of 2003 had been cold. Unusually cold. As if the universe itself was holding its breath, waiting for something. And then, on February 18th, the world exhaled.</p>
+                <p>They called her Mehul. But names are just sounds humans make. What they didn't know—what they couldn't possibly know—was that on this ordinary Tuesday, in this ordinary hospital, in this ordinary town... something extraordinary had just drawn its first breath.</p>
+                <p>She didn't arrive with trumpets. She didn't arrive with fanfare. She arrived the way all legends do: quietly. Innocently. Completely unaware that one day, the world would have no choice but to bow.</p>
+                <p>The nurses cooed. The family cried. The cameras flashed. But the universe? The universe just smiled. Because it knew that this wasn't just a birth. This was an arrival. And nothing would ever be the same.</p>
+            </div>
+        </div>
+        
+        <!-- CHAPTER 2 -->
+        <div class="chapter fade-in" id="chapter2">
+            <div class="chapter-number">Chapter Two</div>
+            <div class="chapter-title">The Explorer</div>
+            <div class="royal-portrait">
+                <div class="portrait-frame">
+                    <div class="image-placeholder">
+                        <span>👶</span> CHAPTER 2
+                        <small>2.jpg</small>
+                    </div>
+                </div>
+            </div>
+            <div class="chapter-text">
+                <p>She started walking. The kingdom was no longer just a crib — it became the whole house. Every corner was an adventure. Every fall made her stronger. Her courage began here.</p>
+                <p>For an entire year, the world had been small—a crib, a room, two arms that held her. Safe. Warm. Known. But something stirred in the queen's blood. Something ancient. Something that whispered: there is more.</p>
+                <p>And so, one day, she stood. The adults gasped. Cameras appeared. Voices encouraged. But Mehul didn't notice any of that. She was too busy looking at the horizon—the doorway, the hallway beyond, the kitchen she'd only heard from a distance.</p>
+                <p>She took a step. The world tilted. She grabbed the edge of the table. Another step. This time, she didn't need to hold on. By the time she reached the doorway, she wasn't just walking anymore. She was striding. With the confidence of someone who knew, even then, that the entire house—the entire world—would one day belong to her.</p>
+                <p>They thought she was just learning to walk. But Mehul was learning to rule.</p>
+            </div>
+        </div>
+        
+        <!-- CHAPTER 3 -->
+        <div class="chapter fade-in" id="chapter3">
+            <div class="chapter-number">Chapter Three</div>
+            <div class="chapter-title">The First Spark</div>
+            <div class="royal-portrait">
+                <div class="portrait-frame">
+                    <div class="image-placeholder">
+                        <span>🧸</span> CHAPTER 3
+                        <small>3.jpg</small>
+                    </div>
+                </div>
+            </div>
+            <div class="chapter-text">
+                <p>Her personality started showing. Little tantrums. Little giggles. That dramatic energy? Yes, already there. The Queen's fire was visible.</p>
+                <p>It wasn't just the way she looked at you—those dark, intense eyes that seemed to see straight through whatever story you were telling. It wasn't just the way she laughed, loud and unapologetic, filling the entire room with sound. It wasn't just the way she demanded things, not with screaming or crying, but with a simple stare that said, <em>I've asked. Now deliver.</em></p>
+                <p>It was all of it. The tantrums, when they came, were legendary. Not because they were loud—though they were—but because they had purpose. She wasn't just angry; she was making a point. She wasn't just upset; she was registering a complaint with management.</p>
+                <p>And the giggles? The giggles could cure any sickness, heal any wound, fix any broken thing in the house. When Mehul laughed, everyone laughed. It was impossible not to. This was the year the fire became visible.</p>
+                <p>"She's going to be trouble," the adults whispered to each other, half-worried, half-amused. They had no idea. Trouble was too small a word for what Mehul was going to be. She was going to be unforgettable.</p>
+            </div>
+        </div>
+        
+        <!-- CHAPTER 4 -->
+        <div class="chapter fade-in" id="chapter4">
+            <div class="chapter-number">Chapter Four</div>
+            <div class="chapter-title">The Artist</div>
+            <div class="royal-portrait">
+                <div class="portrait-frame">
+                    <div class="image-placeholder">
+                        <span>🎨</span> CHAPTER 4
+                        <small>4.jpg</small>
+                    </div>
+                </div>
+            </div>
+            <div class="chapter-text">
+                <p>Colors, crayons, imagination. She probably drew suns bigger than houses. Already creative. Already dreaming beyond limits.</p>
+                <p>The crayon box was 64 colors, and Mehul intended to use every single one. Not on the same drawing—even at four, she had more taste than that. But eventually, yes, every color would find its way onto paper. The sun was never just yellow. The sky was never just blue. Trees had purple leaves, grass had orange blades, and people—well, people were whatever color she felt like that day.</p>
+                <p>"That's not how trees look," an adult once said. Mehul looked at them like they'd just suggested the sky was falling. "It's how MY trees look." The adult never questioned her again.</p>
+                <p>This was the year imagination took over. The walls of the house became galleries. The refrigerator became a museum. Every surface was a potential canvas, and Mehul was an artist with no respect for boundaries.</p>
+                <p>And slowly, quietly, the artist was learning something important: the world could be whatever she imagined. That lesson would serve her well.</p>
+            </div>
+        </div>
+        
+        <!-- CHAPTER 5 -->
+        <div class="chapter fade-in" id="chapter5">
+            <div class="chapter-number">Chapter Five</div>
+            <div class="chapter-title">First Steps Into the World</div>
+            <div class="royal-portrait">
+                <div class="portrait-frame">
+                    <div class="image-placeholder">
+                        <span>🎒</span> CHAPTER 5
+                        <small>5.jpg</small>
+                    </div>
+                </div>
+            </div>
+            <div class="chapter-text">
+                <p>The kingdom expanded again, and this time, it wasn't just a house. New faces. New lessons. She learned to share, to speak up, to shine. Even then, she wasn't ordinary.</p>
+                <p>There were other children everywhere. Running. Shouting. Some crying. Some laughing. A chaos of small humans that would have overwhelmed anyone. Mehul took one look at it all, gripped her straps, and walked in like she owned the place. Because, in her mind, she did.</p>
+                <p>The first day was a blur of new names and new faces. The second day, she'd already picked her favorite spot. The third day, she'd decided which kids were worth her time. By the end of the first week, she had a crew—a small group of admirers who followed her around, laughed at her jokes, and fought over who got to sit next to her.</p>
+                <p>She had that thing. That presence. That magnetic pull that made people want to be near her. "She's a natural leader," someone wrote. They had no idea how right they were.</p>
+            </div>
+        </div>
+        
+        <!-- CHAPTER 6 -->
+        <div class="chapter fade-in" id="chapter6">
+            <div class="chapter-number">Chapter Six</div>
+            <div class="chapter-title">The Curious Mind</div>
+            <div class="royal-portrait">
+                <div class="portrait-frame">
+                    <div class="image-placeholder">
+                        <span>❓</span> CHAPTER 6
+                        <small>6.jpg</small>
+                    </div>
+                </div>
+            </div>
+            <div class="chapter-text">
+                <p>Why is the sky blue? Why this? Why that? Questions everywhere. Intelligence growing quietly like a crown being forged.</p>
+                <p>At six, Mehul discovered the most powerful tool in any ruler's arsenal: the question. Not just any questions. The hard ones. The ones adults hate answering. The ones that make people stop and think and sometimes squirm.</p>
+                <p>"Why is the sky blue?" "Why do people die?" "Why do some kids have more than others?" "If God made everything, who made God?" Her parents learned to have answers ready. Anyone who spent time with Mehul learned that conversations with her were not casual. They were investigations.</p>
+                <p>She wanted to understand everything. Not just know—understand. There was a difference, and even at six, she could feel it. The world was huge, she realized. Huge and mysterious and full of things she didn't know. And Mehul intended to know all of them.</p>
+            </div>
+        </div>
+        
+        <!-- CHAPTER 7 -->
+        <div class="chapter fade-in" id="chapter7">
+            <div class="chapter-number">Chapter Seven</div>
+            <div class="chapter-title">The Gentle Soul</div>
+            <div class="royal-portrait">
+                <div class="portrait-frame">
+                    <div class="image-placeholder">
+                        <span>🌸</span> CHAPTER 7
+                        <small>7.jpg</small>
+                    </div>
+                </div>
+            </div>
+            <div class="chapter-text">
+                <p>Kindness became visible. Helping friends. Loving deeply. Sensitive but strong. A heart too pure for this world.</p>
+                <p>For all her fire, for all her questions, for all her undeniable presence—there was something else growing inside Mehul. Something softer. Something that would become just as important as her strength.</p>
+                <p>It showed in small ways at first. Sharing her snack with a friend who'd forgotten theirs. Comforting someone who was sad. Standing up for the kid everyone else made fun of.</p>
+                <p>It showed in bigger ways too. The way she cried at movies—not just sad movies, but happy ones too. The way she noticed when someone was feeling left out and made sure to include them. The way she hugged—tight and long, like she was trying to transfer some of her warmth into you.</p>
+                <p>"She feels things deeply," people said. They meant it as an observation. But it was more than that. It was her gift. To feel deeply meant to love deeply. To care deeply. To connect deeply.</p>
+            </div>
+        </div>
+        
+        <!-- BOOK TWO: THE AWAKENING -->
+        <div class="section-break">
+            <h2>BOOK TWO · THE AWAKENING</h2>
+        </div>
+        
+        <!-- CHAPTER 8 -->
+        <div class="chapter fade-in" id="chapter8">
+            <div class="chapter-number">Chapter Eight</div>
+            <div class="chapter-title">The Confidence Bloom</div>
+            <div class="royal-portrait">
+                <div class="portrait-frame">
+                    <div class="image-placeholder">
+                        <span>🌟</span> CHAPTER 8
+                        <small>8.jpg</small>
+                    </div>
+                </div>
+            </div>
+            <div class="chapter-text">
+                <p>She started knowing who she was. Standing straight. Smiling brighter. The confidence seed was planted.</p>
+                <p>Something shifted in her eighth year. A quiet settling. A knowing. Until now, Mehul had been discovering the world. Now, she began discovering herself.</p>
+                <p>She stood straighter. Spoke clearer. When she walked into a room, she didn't just enter—she arrived. People noticed. They always had, but now they noticed differently. Not just "there's Mehul" but "oh, Mehul's here. Good."</p>
+                <p>Her opinions became stronger. Her tastes became clearer. She knew what she liked and didn't like, and she wasn't shy about sharing either. Purple was her favorite color. Dancing was her favorite activity. Stupid questions were her least favorite thing to answer.</p>
+                <p>"What do you want to be when you grow up?" an adult asked. Mehul looked at them like they'd just asked the dumbest question in the world. "Myself." The adult laughed. Mehul didn't. She wasn't being funny. She was being honest.</p>
+            </div>
+        </div>
+        
+        <!-- CHAPTER 9 -->
+        <div class="chapter fade-in" id="chapter9">
+            <div class="chapter-number">Chapter Nine</div>
+            <div class="chapter-title">The Drama Queen Era Begins</div>
+            <div class="royal-portrait">
+                <div class="portrait-frame">
+                    <div class="image-placeholder">
+                        <span>🎭</span> CHAPTER 9
+                        <small>9.jpg</small>
+                    </div>
+                </div>
+            </div>
+            <div class="chapter-text">
+                <p>Expressions. Reactions. Attitude. Sass loading. The future Majesty was under construction.</p>
+                <p>At nine, Mehul discovered theater—and theater discovered Mehul. It started small. A few lines. But the moment she stepped on stage, something clicked. The lights. The audience. The way everyone was watching her, waiting for her, hanging on her every word. She was hooked.</p>
+                <p>At home, the drama continued. Every emotion was amplified. Every reaction was heightened. Happy wasn't just happy—it was ecstatic. Sad wasn't just sad—it was tragic. Annoyed wasn't just annoyed—it was a full performance, complete with sighs and eye rolls and dramatic exits.</p>
+                <p>"She's so dramatic," her family said, half-exasperated, half-impressed. They didn't understand. Mehul wasn't being dramatic. Mehul was practicing. Every sigh, every eye roll, every hands-thrown-in-the-air moment was training for the day she'd need those skills for real.</p>
+            </div>
+        </div>
+        
+        <!-- CHAPTER 10 -->
+        <div class="chapter fade-in" id="chapter10">
+            <div class="chapter-number">Chapter Ten</div>
+            <div class="chapter-title">The Leader</div>
+            <div class="royal-portrait">
+                <div class="portrait-frame">
+                    <div class="image-placeholder">
+                        <span>👑</span> CHAPTER 10
+                        <small>10.jpg</small>
+                    </div>
+                </div>
+            </div>
+            <div class="chapter-text">
+                <p>Group activities? She took charge. Decisions? She had opinions. Leadership was natural to her.</p>
+                <p>By ten, it was official: Mehul was in charge. Not officially, of course. No one had voted her into any position. But when group things happened, Mehul took over. When games were played, Mehul made the rules. When decisions needed making, everyone looked to Mehul first.</p>
+                <p>She didn't demand the role. It just naturally fell to her. Because she had vision. She could see what needed to be done, and more importantly, she could convince others to help do it.</p>
+                <p>When Mehul spoke, people listened. Not because she was loud, but because her voice had this thing—this warmth, this authority—that made you trust whatever she was saying.</p>
+                <p>"Class president someday," someone predicted. Mehul shrugged. Class president was too small. She was thinking bigger. The world maybe. The world was big enough.</p>
+            </div>
+        </div>
+        
+        <!-- CHAPTER 11 -->
+        <div class="chapter fade-in" id="chapter11">
+            <div class="chapter-number">Chapter Eleven</div>
+            <div class="chapter-title">The Emotional Depth</div>
+            <div class="royal-portrait">
+                <div class="portrait-frame">
+                    <div class="image-placeholder">
+                        <span>🌺</span> CHAPTER 11
+                        <small>11.jpg</small>
+                    </div>
+                </div>
+            </div>
+            <div class="chapter-text">
+                <p>She began feeling deeper. Thinking more. Understanding more. Her heart became wiser.</p>
+                <p>Eleven was the year feelings got complicated. Not bad complicated. Just... more. More depth. More layers. More understanding of things she couldn't quite name.</p>
+                <p>Friendships mattered differently now. Not just playmates, but confidants. People she could trust with the thoughts she was only beginning to have. People who wouldn't laugh at the questions she was only beginning to ask.</p>
+                <p>She started writing. Nothing formal—just thoughts, feelings, observations. A diary she hid. Words she never showed anyone. In those pages, she was freer than anywhere else. No one to perform for. No one to impress. Just Mehul and the page, figuring things out together.</p>
+                <p>"You're so mature for your age," adults told her. She didn't feel mature. She felt like she was feeling everything for the first time. But somehow, she also felt like she'd been feeling these things forever. Like her heart was ancient.</p>
+            </div>
+        </div>
+        
+        <!-- CHAPTER 12 -->
+        <div class="chapter fade-in" id="chapter12">
+            <div class="chapter-number">Chapter Twelve</div>
+            <div class="chapter-title">The Glow Up Begins</div>
+            <div class="royal-portrait">
+                <div class="portrait-frame">
+                    <div class="image-placeholder">
+                        <span>💫</span> CHAPTER 12
+                        <small>12.jpg</small>
+                    </div>
+                </div>
+            </div>
+            <div class="chapter-text">
+                <p>That phase where childhood slowly turns into something powerful. She started becoming unforgettable.</p>
+                <p>Something was happening to her. Something strange and exciting and beautiful all at once. She was growing. Not just taller, though that too. She was growing into herself. The childish roundness of her face was sharpening. The awkwardness was fading. Every time she looked in the mirror, she saw someone slightly different from the day before.</p>
+                <p>Who was she becoming? She didn't know yet. But whoever it was, she was starting to like her.</p>
+                <p>Clothes mattered more now. Hair mattered more. The opinions of certain people mattered more—not everyone, just specific ones. The ones whose eyes lingered a little longer. The ones whose smiles meant something.</p>
+                <p>Childhood was ending. Everyone said that was sad. But Mehul looked at the person she was becoming and felt something unexpected: excitement. The best was yet to come. She could feel it.</p>
+            </div>
+        </div>
+        
+        <!-- CHAPTER 13 -->
+        <div class="chapter fade-in" id="chapter13">
+            <div class="chapter-number">Chapter Thirteen</div>
+            <div class="chapter-title">The Strong Girl</div>
+            <div class="royal-portrait">
+                <div class="portrait-frame">
+                    <div class="image-placeholder">
+                        <span>🔥</span> CHAPTER 13
+                        <small>13.jpg</small>
+                    </div>
+                </div>
+            </div>
+            <div class="chapter-text">
+                <p>Teenage years. Mood swings. Growth. Strength. She faced changes like a warrior.</p>
+                <p>Thirteen. A teenager. The word felt heavy and light at the same time. The world was a battlefield. Everyone knew it. The cliques, the drama, the constant pressure to be someone you weren't. Mehul watched it all with weary eyes, already tired of games she hadn't chosen to play.</p>
+                <p>But she played anyway. And she played well. The key, she discovered, was knowing yourself. Really knowing yourself. The girls who struggled were the ones who didn't know who they were yet. They changed with every trend, every opinion, every whisper. They were leaves in the wind. Mehul was a tree.</p>
+                <p>The wind blew. She bent sometimes—everyone bends. But she never broke. And she never forgot where her roots were.</p>
+                <p>"How do you stay so confident?" a friend asked. Mehul thought about it. "I don't know. I just... know what I like. Know what I don't. The rest is noise."</p>
+            </div>
+        </div>
+        
+        <!-- CHAPTER 14 -->
+        <div class="chapter fade-in" id="chapter14">
+            <div class="chapter-number">Chapter Fourteen</div>
+            <div class="chapter-title">The Silent Fighter</div>
+            <div class="royal-portrait">
+                <div class="portrait-frame">
+                    <div class="image-placeholder">
+                        <span>🌹</span> CHAPTER 14
+                        <small>14.jpg</small>
+                    </div>
+                </div>
+            </div>
+            <div class="chapter-text">
+                <p>Challenges probably came. But she didn't break. She adapted. She learned. She matured.</p>
+                <p>Fourteen brought challenges she couldn't have predicted. Not the usual ones—those she handled easily. Different ones. Deeper ones. The kind that happen inside, where no one can see. The kind you have to fight alone.</p>
+                <p>She fought them anyway. No one knew. That was the point. While she smiled and laughed and played her part, something inside her was wrestling with shadows. Learning. Growing. Becoming stronger in ways that don't show on the outside.</p>
+                <p>This was the year she learned to sit with her own feelings. To process without processing out loud. To carry weight without complaining about it. It was lonely sometimes. But it was necessary. Because the queen doesn't just rule the kingdom. The queen rules herself first.</p>
+            </div>
+        </div>
+        
+        <!-- BOOK THREE: THE RISE -->
+        <div class="section-break">
+            <h2>BOOK THREE · THE RISE</h2>
+        </div>
+        
+        <!-- CHAPTER 15 -->
+        <div class="chapter fade-in" id="chapter15">
+            <div class="chapter-number">Chapter Fifteen</div>
+            <div class="chapter-title">The Fire Within</div>
+            <div class="royal-portrait">
+                <div class="portrait-frame">
+                    <div class="image-placeholder">
+                        <span>🔥</span> CHAPTER 15
+                        <small>15.jpg</small>
+                    </div>
+                </div>
+            </div>
+            <div class="chapter-text">
+                <p>Ambition started showing. Dreams got bigger. She wasn't meant for average.</p>
+                <p>At fifteen, Mehul discovered something inside her that she hadn't felt before: hunger. Not for food. For more. For everything. For the kind of life people write books about. For the kind of future that makes people say "I knew her when."</p>
+                <p>She started planning. Not dreaming—planning. Dreams are vague. Plans are specific. She wanted specific things: real friends, experiences that would shape her, memories she'd never forget. And she went after them.</p>
+                <p>When she talked about her dreams—which she did, with those she trusted—her voice changed. It got quieter, somehow, and more intense. Like she was sharing secrets. Like she was letting you into a world where she was already queen. The fire inside her burned brighter than ever. And she had no intention of letting it die.</p>
+            </div>
+        </div>
+        
+        <!-- CHAPTER 16 -->
+        <div class="chapter fade-in" id="chapter16">
+            <div class="chapter-number">Chapter Sixteen</div>
+            <div class="chapter-title">The Soft but Strong Era</div>
+            <div class="royal-portrait">
+                <div class="portrait-frame">
+                    <div class="image-placeholder">
+                        <span>🌼</span> CHAPTER 16
+                        <small>16.jpg</small>
+                    </div>
+                </div>
+            </div>
+            <div class="chapter-text">
+                <p>Balancing emotions and strength. Laughing loud. Loving hard. Learning life.</p>
+                <p>Sixteen was the year Mehul learned the most important lesson of all: you can be both. Soft and strong. Gentle and fierce. Kind and ambitious. The world tries to tell you you have to choose—that to be one, you must sacrifice the other. But the world is wrong.</p>
+                <p>Mehul proved it every day. She laughed loud and loved hard. She cried at movies and stood firm in her beliefs. She hugged her friends tight and told them the truth even when it hurt. She was everything, all at once, and somehow it all fit.</p>
+                <p>This was the year she stopped trying to be one thing. This was the year she embraced the glorious contradiction of being human. And she was more beautiful for it.</p>
+            </div>
+        </div>
+        
+        <!-- CHAPTER 17 -->
+        <div class="chapter fade-in" id="chapter17">
+            <div class="chapter-number">Chapter Seventeen</div>
+            <div class="chapter-title">The Self Discovery</div>
+            <div class="royal-portrait">
+                <div class="portrait-frame">
+                    <div class="image-placeholder">
+                        <span>✨</span> CHAPTER 17
+                        <small>17.jpg</small>
+                    </div>
+                </div>
+            </div>
+            <div class="chapter-text">
+                <p>Who am I? What do I want? She started building herself consciously.</p>
+                <p>Seventeen brought the questions everyone asks but no one can answer. Who am I? What do I want? Why am I here? The questions circled her mind like birds, never landing, never leaving. She didn't expect answers—not really. But she knew the asking was important.</p>
+                <p>The year was strange. The world was strange. Everyone was forced to sit with themselves in ways they never had before. No distractions. No escapes. Just her and her thoughts.</p>
+                <p>It could have broken her. It broke a lot of people. But Mehul used it. Used the quiet to listen to herself. Used the isolation to figure out who she was when no one was watching. And when the world opened again, she emerged not just intact—but transformed.</p>
+            </div>
+        </div>
+        
+        <!-- CHAPTER 18 -->
+        <div class="chapter fade-in" id="chapter18">
+            <div class="chapter-number">Chapter Eighteen</div>
+            <div class="chapter-title">The Adult Queen</div>
+            <div class="royal-portrait">
+                <div class="portrait-frame">
+                    <div class="image-placeholder">
+                        <span>🎯</span> CHAPTER 18
+                        <small>18.jpg</small>
+                    </div>
+                </div>
+            </div>
+            <div class="chapter-text">
+                <p>Legally adult. Mentally evolving. Responsibilities started knocking. She handled them gracefully.</p>
+                <p>Eighteen. Adult. The words felt strange in her mouth, like a language she was still learning. But she was ready. Or ready enough. No one's ever really ready.</p>
+                <p>Responsibilities multiplied overnight. Decisions that used to be made for her were now hers alone. The safety net of childhood was gone, and she was flying without it. And flying felt amazing.</p>
+                <p>She made mistakes—everyone does. She learned from them—not everyone does. She grew, slowly and sometimes painfully, into the adult she was becoming. The girl was gone now. Not disappeared, but transformed. Like a caterpillar becoming something else. And what she was becoming? Magnificent.</p>
+            </div>
+        </div>
+        
+        <!-- BOOK FOUR: THE CORONATION -->
+        <div class="section-break">
+            <h2>BOOK FOUR · THE CORONATION</h2>
+        </div>
+        
+        <!-- CHAPTER 19 -->
+        <div class="chapter fade-in" id="chapter19">
+            <div class="chapter-number">Chapter Nineteen</div>
+            <div class="chapter-title">The Independent Soul</div>
+            <div class="royal-portrait">
+                <div class="portrait-frame">
+                    <div class="image-placeholder">
+                        <span>💼</span> CHAPTER 19
+                        <small>19.jpg</small>
+                    </div>
+                </div>
+            </div>
+            <div class="chapter-text">
+                <p>Stepping into bigger spaces. Making decisions. Becoming her own support system.</p>
+                <p>Nineteen was the year she realized she could do it alone. Not that she wanted to be alone—she loved her people, her circle, her chosen family. But knowing she could stand on her own? That was power.</p>
+                <p>She made decisions without asking permission. She solved problems without calling for help. She built something—a life, an identity, a future—with her own two hands. The independence felt terrifying at first. Then liberating. Then normal.</p>
+                <p>She walked into rooms differently now. Not asking for permission to be there. Not hoping someone would notice her. Just... being. And because of that, everyone noticed. You couldn't help it. Some people are just magnetic. This was who she was now. This was who she'd always been becoming.</p>
+            </div>
+        </div>
+        
+        <!-- CHAPTER 20 -->
+        <div class="chapter fade-in" id="chapter20">
+            <div class="chapter-number">Chapter Twenty</div>
+            <div class="chapter-title">The Mature Glow</div>
+            <div class="royal-portrait">
+                <div class="portrait-frame">
+                    <div class="image-placeholder">
+                        <span>🌷</span> CHAPTER 20
+                        <small>20.jpg</small>
+                    </div>
+                </div>
+            </div>
+            <div class="chapter-text">
+                <p>Confidence stable. Energy balanced. Beauty inside and outside blooming fully.</p>
+                <p>Twenty. The childhood decade behind her. A new one stretching ahead. Something had settled in Mehul. A calmness. A certainty. The frantic searching of her teenage years had eased, replaced by something quieter and stronger.</p>
+                <p>She knew herself now. Not completely—does anyone?—but enough. Enough to trust her instincts. Enough to stop second-guessing every choice. Enough to look in the mirror and recognize the person looking back.</p>
+                <p>The glow wasn't just physical, though that was there too. It was deeper. It was the light of someone who's made peace with who they are. And that light? It was beautiful.</p>
+            </div>
+        </div>
+        
+        <!-- CHAPTER 21 -->
+        <div class="chapter fade-in" id="chapter21">
+            <div class="chapter-number">Chapter Twenty-One</div>
+            <div class="chapter-title">The Woman She Became</div>
+            <div class="royal-portrait">
+                <div class="portrait-frame">
+                    <div class="image-placeholder">
+                        <span>🌙</span> CHAPTER 21
+                        <small>21.jpg</small>
+                    </div>
+                </div>
+            </div>
+            <div class="chapter-text">
+                <p>Not a girl anymore. A woman. A thinker. A dreamer. A fighter. A lover.</p>
+                <p>At twenty-one, Mehul looked in the mirror and saw someone new. The girl was still there—in her smile, in her laugh, in the way she got excited about small things. But there was something else now. Something deeper in her eyes. Something quieter in her presence.</p>
+                <p>She had lived. Really lived. Through joy and pain, through love and loss, through moments that lifted her and moments that brought her to her knees. And she was still standing. Still smiling. Still herself.</p>
+                <p>The woman she'd become wasn't who she'd imagined at fifteen. She was better. More real. More complicated. More beautiful in ways that can't be photographed. This was her now. Fully. Finally. And she was magnificent.</p>
+            </div>
+        </div>
+        
+        <!-- CHAPTER 22 -->
+        <div class="chapter fade-in" id="chapter22">
+            <div class="chapter-number">Chapter Twenty-Two</div>
+            <div class="chapter-title">The Era of Power</div>
+            <div class="royal-portrait">
+                <div class="portrait-frame">
+                    <div class="image-placeholder">
+                        <span>⚡</span> CHAPTER 22
+                        <small>22.jpg</small>
+                    </div>
+                </div>
+            </div>
+            <div class="chapter-text">
+                <p>This was her strongest year yet. She learned who stays. Who leaves. What matters. She grew in silence. She shined without noise.</p>
+                <p>Twenty-two hit different. Maybe it was the lessons of the years before. Maybe it was simply time. But something clicked this year. Something locked into place.</p>
+                <p>Mehul stopped explaining herself. Stopped apologizing for who she was. Stopped waiting for permission to take up space. She learned who stays and who leaves. She learned what matters and what doesn't. She grew in silence, away from the noise, away from the opinions of people who didn't really know her.</p>
+                <p>And when she emerged? She shone. Not loudly. Not for attention. Just quietly, steadily, like the sun. Like someone who knows her worth and doesn't need anyone to confirm it. This was her strongest year yet. But the best part? She was just getting started.</p>
+            </div>
+        </div>
+        
+        <!-- CHAPTER 23 -->
+        <div class="chapter fade-in" id="chapter23">
+            <div class="chapter-number">Chapter Twenty-Three</div>
+            <div class="chapter-title">The Reign Continues</div>
+            <div class="royal-portrait">
+                <div class="portrait-frame">
+                    <div class="image-placeholder">
+                        <span>👑</span> CHAPTER 23
+                        <small>23.jpg</small>
+                    </div>
+                </div>
+            </div>
+            <div class="chapter-text">
+                <p>And now… she turns 23. Not just older — stronger. Not just beautiful — unstoppable. Not just loved — deeply cherished.</p>
+                <p>This year will be the year of expansion, healing, happiness, and dominance. Her Majesty doesn't age… she evolves.</p>
+                <p>The girl who arrived on February 18th, 2003, has become a woman who lights up every room she enters. Who makes people feel seen. Who loves with her whole heart and expects nothing less in return.</p>
+                <p>She is beautiful in the way that has nothing to do with features. It's in the way she listens. The way her eyes hold galaxies when she's thinking. The way her voice carries kingdoms when she speaks. The way her presence makes ordinary moments feel like ceremonies.</p>
+                <p>She is enough. She always has been. And now, at twenty-three, she finally knows it. Her Majesty doesn't age. She evolves. The reign continues.</p>
+            </div>
+        </div>
+        
+        <!-- AUTHOR'S LETTER -->
+        <div class="author-letter fade-in" id="letter">
+            <h3>A Letter From the Author</h3>
+            <div class="letter-content">
+                <p>To Her Majesty, on the occasion of her twenty-third year,</p>
+                <p>Watching from afar, through stories and photographs and moments shared, one thing becomes undeniable: you have always been extraordinary. From the very first cry that cut through the winter air in 2003 to the woman celebrating today, there has been a thread of light running through your life.</p>
+                <p>This chronicle is an attempt to capture that light. To put into words what photographs can only hint at—the way your laugh changes rooms, the way your presence makes people feel seen, the way your strength inspires everyone lucky enough to witness it.</p>
+                <p>You're not just the hero of your own journey. You're the queen of everyone lucky enough to know you.</p>
+                <p>Happy Birthday, Mehul. The kingdom is yours.</p>
+                <div class="signature">Your Loyal Subject ✨</div>
+            </div>
+        </div>
+        
+        <!-- FOOTER -->
+        <div class="royal-footer">
+            <p>👑 THE ROYAL CHRONICLE OF HER MAJESTY MEHUL 👑</p>
+            <p>18th February 2003 — 18th February 2026</p>
+        </div>
+    </div>
+    
+    <script>
+        const music = document.getElementById('royalMusic');
+        const musicToggle = document.getElementById('musicToggle');
+        const musicIcon = document.getElementById('musicIcon');
+        let isPlaying = false;
+        
+        music.play().then(() => {
+            isPlaying = true;
+            musicIcon.textContent = '🔊';
+        }).catch(() => {
+            isPlaying = false;
+            musicIcon.textContent = '🔇';
+        });
+        
+        musicToggle.addEventListener('click', () => {
+            if (isPlaying) {
+                music.pause();
+                musicIcon.textContent = '🔇';
+            } else {
+                music.play();
+                musicIcon.textContent = '🔊';
+            }
+            isPlaying = !isPlaying;
+        });
+        
+        const faders = document.querySelectorAll('.fade-in');
+        const appearOptions = { threshold: 0.2, rootMargin: "0px 0px -50px 0px" };
+        const appearOnScroll = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            });
+        }, appearOptions);
+        
+        faders.forEach(fader => appearOnScroll.observe(fader));
+        
+        document.addEventListener('mousemove', (e) => {
+            if (Math.random() > 0.9) {
+                const sparkle = document.createElement('div');
+                sparkle.classList.add('sparkle');
+                sparkle.innerHTML = '✨';
+                sparkle.style.left = e.pageX + 'px';
+                sparkle.style.top = e.pageY + 'px';
+                document.body.appendChild(sparkle);
+                setTimeout(() => sparkle.remove(), 1000);
+            }
+        });
+        
+        console.log('%c👑 LONG LIVE HER MAJESTY MEHUL 👑', 'font-size: 20px; color: gold;');
+    </script>
+</body>
+</html>
